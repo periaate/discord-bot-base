@@ -6,6 +6,8 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+const name = "ping"
+
 var cmd = discordgo.ApplicationCommand{
 	Name:        "ping",
 	Description: "pong",
@@ -34,12 +36,12 @@ func pingpongMsg(bot *discordgo.Session, m *discordgo.MessageCreate) {
 }
 
 func init() {
-	_, cmdFound := Commands["ping"]
-	_, handlerFound := Handlers["ping"]
-	_, messageCmd := MessageCreate["ping"]
+	_, cmdFound := Commands[name]
+	_, handlerFound := Handlers[name]
+	_, messageCmd := MessageCreate[name]
 	if !cmdFound && !handlerFound && !messageCmd {
-		Commands["ping"] = &cmd
-		Handlers["ping"] = pingpongSlash
-		MessageCreate["ping"] = pingpongMsg
+		Commands[name] = &cmd
+		Handlers[name] = pingpongSlash
+		MessageCreate[name] = pingpongMsg
 	}
 }
