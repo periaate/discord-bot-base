@@ -1,27 +1,18 @@
 # discord-bot-base
-A base for a discord bot
+A base for a discord bot  
 
+## Installation
+You will need to create a config.json file, config.json file has two fields, `"token"` and `"guild"`.  
+Token is your bot token. Guild is your server id, and is not necessary to be set at this moment.  
 
-create a file called "config.json"  
-In this file, add two string fields "token" and "guild".  
-These should your bot token, and your testing guild (guild not currently used)  
+## Running
+
 to run server: 
 `go run main.go`
 
+## Structure
 
-```
-main.go -> run server / bot
-
-server.go -> run bot, load handlers for slash, msg commands
-
-cmd/cmd -> create package (folder) wide variables for defining functions
-
-cmd/* -> files define their functionality, and add them accordingly to cmd variables in the init() function
-
-go run main.go
-init functions are run in all files that were imported from cmd with an _ in main.go
-
-Server init adds functions to Bot
-server.Start is ran, begins listening for events.
-If event happens, the command used is matched against the maps in cmd, if found, run the function found in the map
-```
+Slash/message commands are all located under cmd.  
+  
+To create a new command, create a new file, create the functions/structs necessary.  
+Add them to cmd/cmd.go maps in an init function.
